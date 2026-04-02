@@ -1,0 +1,332 @@
+:root {
+    --primary: hsl(252, 100%, 65%);
+    --primary-dark: hsl(252, 100%, 55%);
+    --secondary: hsl(300, 100%, 65%);
+    
+    --success: hsl(152, 69%, 45%);
+    --success-bg: hsl(152, 69%, 95%);
+    
+    --danger: hsl(354, 85%, 55%);
+    --danger-bg: hsl(354, 85%, 95%);
+
+    --bg-gradient: linear-gradient(135deg, hsl(230, 80%, 94%), hsl(280, 80%, 92%));
+    
+    --surface: hsl(0, 0%, 100%);
+    --surface-hover: hsl(240, 20%, 98%);
+    
+    --text-main: hsl(240, 20%, 20%);
+    --text-muted: hsl(240, 10%, 50%);
+    --text-light: hsl(0, 0%, 100%);
+
+    --border: hsl(240, 10%, 90%);
+    --radius-lg: 24px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+
+    --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
+    --shadow-glow: 0 10px 20px -5px rgba(110, 86, 255, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.app-container {
+    background: var(--surface);
+    width: 100%;
+    max-width: 1100px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.app-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 3rem 2rem;
+    color: var(--text-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.total-balance {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.app-content {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+@media (min-width: 800px) {
+    .app-content {
+        flex-direction: row;
+        gap: 3rem;
+    }
+}
+
+.input-section {
+    flex: 1;
+    max-width: 350px;
+}
+
+.table-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+input, select {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background: var(--surface-hover);
+}
+
+input:focus, select:focus {
+    border-color: var(--primary);
+    background: var(--surface);
+    box-shadow: 0 0 0 4px rgba(110, 86, 255, 0.1);
+}
+
+.add-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-glow);
+    margin-top: 1rem;
+}
+
+.add-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px -5px rgba(110, 86, 255, 0.5);
+}
+
+.add-btn:active {
+    transform: translateY(0);
+}
+
+.table-wrapper {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow-x: auto;
+    flex-grow: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: var(--surface-hover);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+tbody tr:hover {
+    background: var(--surface-hover);
+}
+
+td {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.desc-col {
+    color: var(--text-main);
+}
+
+.date-col {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.badge {
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge.income {
+    background: var(--success-bg);
+    color: var(--success);
+}
+
+.badge.expense {
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+
+.amount-col {
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.amount-col.income {
+    color: var(--success);
+}
+
+.amount-col.expense {
+    color: var(--danger);
+}
+
+.balance-col {
+    font-weight: 600;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.delete-btn:hover {
+    color: var(--danger);
+    background: var(--danger-bg);
+}
+
+.empty-state {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-muted);
+    background: var(--surface-hover);
+    border-radius: var(--radius-lg);
+    border: 1px dashed var(--border);
+    margin-top: 1rem;
+}
+
+.empty-state p {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.empty-icon {
+    color: var(--border);
+}
+
+/* Mobile PWA Styling */
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+        align-items: flex-start;
+    }
+    .app-container {
+        border-radius: 0;
+        min-height: 100vh;
+        box-shadow: none;
+    }
+    .app-header {
+        padding: 2rem 1.5rem;
+    }
+    .total-balance {
+        font-size: 2.2rem;
+    }
+}
